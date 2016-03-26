@@ -1,0 +1,27 @@
+#zh.yml
+
+zh:
+  activerecord:
+    attributes:
+      welcome:
+        org: "官网连接"
+        link: "下载连接"
+        name: "应用名称"
+        decription: "应用描述"
+        logo: "APP图标(LOGO)"
+  v:
+    app: "APP留有益"
+    wel: "首页"
+    about: "关于"
+    recommend_app: "推荐APP"
+    new_app: "最新APP"
+    foot: "APP留有益(app621.com)专业APP推荐,精选最有价值的APP应用,欢迎下载。"
+    copyright: "应用作品版权归原作者享有，如无意之中侵犯了您的版权，请联系我们，APP621将应您的要求删除。"
+    beian: "粤ICP备15112697号"
+    addapp: "添加APP"
+    editapp: "修改APP"
+    submit: "提交审核"
+    inputapp: "请输入APP名称"
+    inputdesc: "请输入应用简介"
+    inputlink: "请输入下载地址"
+    inputorg: "请输入官网地址"

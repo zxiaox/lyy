@@ -1,0 +1,40 @@
+= form_for @welcome, html: {class: "addapp"} do |f|
+  - if @welcome.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@welcome.errors.count, "error")} prohibited this welcome from being saved:"
+      ul
+        - @welcome.errors.full_messages.each do |message|
+          li = message
+
+  .form_row
+    = f.label :name
+    = f.text_field :name, placeholder: t("v.inputapp")
+  .form_row
+    = f.label :logo
+    = f.file_field :logo
+  .form_row
+    = f.label :decription
+    = f.text_field :decription, placeholder: t("v.inputdesc")
+  .form_row
+    = f.label :link
+    = f.text_field :link, placeholder: t("v.inputlink")
+  .form_row
+    = f.label :org
+    = f.text_field :org, placeholder: t("v.inputorg")
+  button.upload_submit_btn = t("v.submit")
+
+
+- content_for :js_files do
+  javascript:
+    $('.upload_submit_btn').click(function(){
+      var uid = $('input[name="uid"]').val();
+      var name = $('input[name="name"]').val();
+      var describe = $('textarea[name="describe"]').val();
+      var F = $('input[name="filelogo[]"]').val();
+      if(name && describe && F){
+        return true;
+      }else{
+        //alert('请确认APP信息!')
+        //return false;
+      }
+    });

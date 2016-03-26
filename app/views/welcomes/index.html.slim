@@ -1,0 +1,17 @@
+.content
+  .oneblock
+    p.apptitle= t("v.recommend_app")
+    .apps
+      - @recommend_apps.each do |r|
+        =link_to welcome_path(r), class: 'app' do
+          .appimg
+            =image_tag r.logo
+          p.appname= r.name
+  .oneblock
+    p.apptitle= t("v.new_app")
+    .apps
+      - @new_apps.each do |n|
+        =link_to welcome_path(n), class: 'app' do
+          .appimg
+            =image_tag n.logo
+          p.appname= n.name

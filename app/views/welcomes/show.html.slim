@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @welcome.name
+p
+  strong Logo:
+  = @welcome.logo
+p
+  strong Decription:
+  = @welcome.decription
+p
+  strong Link:
+  = @welcome.link
+p
+  strong Org:
+  = @welcome.org
+p
+  strong View:
+  = @welcome.view
+p
+  strong Viewhehe:
+  = @welcome.viewhehe
+p
+  strong Love:
+  = @welcome.love
+
+= link_to 'Edit', edit_welcome_path(@welcome)
+'|
+= link_to 'Back', welcomes_path
