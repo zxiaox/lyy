@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #add me
+gem 'pg'
 gem 'slim'
 gem 'slim-rails'
 gem 'default_value_for', '~> 3.0.0'

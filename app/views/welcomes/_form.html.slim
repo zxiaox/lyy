@@ -1,7 +1,6 @@
 = form_for @welcome, html: {class: "addapp"} do |f|
   - if @welcome.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@welcome.errors.count, "error")} prohibited this welcome from being saved:"
       ul
         - @welcome.errors.full_messages.each do |message|
           li = message
@@ -14,7 +13,10 @@
     = f.file_field :logo
   .form_row
     = f.label :decription
-    = f.text_field :decription, placeholder: t("v.inputdesc")
+    = f.text_area :decription, placeholder: t("v.inputdesc")
+  .form_row
+    = f.label :imgs
+    = f.file_field :imgs, multiple: true
   .form_row
     = f.label :link
     = f.text_field :link, placeholder: t("v.inputlink")

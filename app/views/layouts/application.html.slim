@@ -3,7 +3,8 @@ html
   head
     meta content=("text/html; charset=utf-8") http-equiv="Content-Type"
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
-    meta name="description" content="#{@description}"
+    meta name="description" content="#{@desc}"
+    meta name="keywords" content= t("g.keywords")
     meta name="format-detection" content="telephone=no"
     = csrf_meta_tags
     = stylesheet_link_tag "application", media: "all"
@@ -11,11 +12,11 @@ html
     = favicon_link_tag "/favicon.ico"
 
     title= @title
-
+    
+    = javascript_include_tag "application"
+    = javascript_include_tag "http://g.tbcdn.cn/kissy/m/0.2.1/mini-full.js"
   body
     == render partial: "layouts/head"
     == yield
-
-    = javascript_include_tag "application"
     == yield(:js_files)
     == render partial: "layouts/foot"

@@ -1,3 +1,6 @@
+- @title = @title ? @title : t("g.title", t: @t)
+- @desc = @desc ? @desc : t("g.desc")
+
 .content
   .oneblock
     p.apptitle= t("v.recommend_app")
@@ -5,7 +8,7 @@
       - @recommend_apps.each do |r|
         =link_to welcome_path(r), class: 'app' do
           .appimg
-            =image_tag r.logo
+            =image_tag '/up/' + r.logo
           p.appname= r.name
   .oneblock
     p.apptitle= t("v.new_app")
@@ -13,5 +16,5 @@
       - @new_apps.each do |n|
         =link_to welcome_path(n), class: 'app' do
           .appimg
-            =image_tag n.logo
+            =image_tag '/up/' + n.logo
           p.appname= n.name

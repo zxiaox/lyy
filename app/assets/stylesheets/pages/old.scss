@@ -12,7 +12,9 @@
 .red{
   color:red !important;
 }
-[id^="ad"]{
+[id^="ad"],
+.hidden
+{
   display:none !important;
 }
 /*logo*/
@@ -221,6 +223,7 @@
   height:30px;
   margin-left:15px;
   padding:2px 8px;
+  border: 1px solid #e8e8e8;
 }
 
 .addapp textarea{
@@ -228,6 +231,10 @@
   vertical-align:top;
   width: 60%;
   resize:none;
+}
+.addapp input[type="file"]{
+  font-family: PingFangSC-Thin;
+  font-size: 14px;
 }
 /*
 appdetail
@@ -288,14 +295,22 @@ appdetail
   float:left;
   margin-right:4px;
 }
-
-
+#slides {
+  position:relative;
+  width:320px;
+  height:570px;
+  margin:0 auto;
+  overflow:hidden;
+  img {
+    width: 100%;
+  }
+}
 /*
 end appdetail
 */
 
 /*upload*/
-#add,#edit{position: absolute;
+#add, #edit {position: absolute;
     top: 0;
     left: 0;
     background: rgba(0,0,0,0.5);
@@ -424,6 +439,9 @@ a.close{
   .appdetail .describe div{
     width: 296px;
   }
+  #slides {
+    width:375px;
+  }
 }
 @media screen and (min-width:414px){
   .apps{
@@ -446,6 +464,9 @@ a.close{
   }
   .appdetail .describe div{
     width: 100%;
+  }
+  #slides {
+    width:414px;
   }
 }
 @media screen and (min-width:750px){

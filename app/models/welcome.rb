@@ -1,5 +1,6 @@
 class Welcome < ActiveRecord::Base
   validates_presence_of :name
+  validates_presence_of :logo
 
   # Constant
   default_value_for :imgs, []

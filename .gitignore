@@ -17,3 +17,8 @@
 /tmp
 */.DS_Store
 .DS_Store
+public/up/*
+config/database.yml
+.byebug_history
+
+/db/schema.rb

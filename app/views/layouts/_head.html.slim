@@ -12,10 +12,10 @@ div(style="height:0;overflow:hidden;")
       div= "A"
       div= "P"
       div= "P"
-  div
+  div.hidden
     =link_to root_path, class: "topdot" do
       i.icon.iconfont.home &#xe600;
       = t("v.wel")
-    =link_to root_path, class: "topdot" do
+    =link_to '/about.html', class: "topdot" do
       i.icon.iconfont.about &#xe604;
       = t("v.about")
