@@ -1,5 +1,5 @@
-- @title = t("g.title", t: t("v.addapp"))
-- @desc = t("g.desc")
+- @title = @title ? @title : t("g.title", t: t("v.addapp"))
+- @desc = @desc ? @desc : t("g.desc")
 
 .content
   .apptitle=t("v.addapp")

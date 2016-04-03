@@ -2,19 +2,18 @@ require 'fileutils'
 
 class WelcomesController < ApplicationController
   before_action :set_welcome, only: [:show, :edit, :update, :destroy]
-
   # GET /welcomes
   # GET /welcomes.json
   def index
-    @t = t("p.root")
-    @welcomes = Welcome.all
-    @recommend_apps = Welcome.recommend.limit(8)
-    @new_apps = Welcome.newapp.limit(8)
+    #@welcomes = Welcome.all
+    @recommend_apps = Welcome.approved.recommend.limit(8)
+    @new_apps = Welcome.approved.newapp.limit(8)
   end
 
   # GET /welcomes/1
   # GET /welcomes/1.json
   def show
+    render_404 unless @welcome.approved
     @welcome.update_attribute(:view, @welcome.view + 1)
     @welcome.update_attribute(:viewhehe, @welcome.viewhehe + rand(6))
   end
@@ -127,12 +126,17 @@ class WelcomesController < ApplicationController
     end
   end
 
+  def about
+  end
+
+  def heart
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_welcome
       @welcome = Welcome.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def welcome_params
       params.require(:welcome).permit(:name, :logo, :decription, :link, :org, :imgs => [])

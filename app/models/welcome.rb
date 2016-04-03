@@ -12,6 +12,7 @@ class Welcome < ActiveRecord::Base
   validates_length_of :name, maximum: 64, if: :name_changed?
 
   # Scopes
+  scope :approved, -> { where("approved > 0") }
   scope :recommend, -> { where("recommend > 0") }
   scope :newapp, -> { order("created_at desc") }
 end
