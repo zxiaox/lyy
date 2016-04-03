@@ -104,6 +104,8 @@ class WelcomesController < ApplicationController
     @welcome.link = welcome_params[:link] unless welcome_params[:link].blank?
     @welcome.org = welcome_params[:org] unless welcome_params[:org].blank?
     @welcome.imgs = pimgs unless pimgs.blank?
+    @welcome.recommend = welcome_params["recommend"] unless welcome_params["recommend"].blank?
+    @welcome.approved = welcome_params["approved"] unless welcome_params["approved"].blank?
 
     respond_to do |format|
       if @welcome.save
@@ -126,6 +128,9 @@ class WelcomesController < ApplicationController
     end
   end
 
+  def admin
+    @app = Welcome.order('id desc').all
+  end
   def about
   end
 
@@ -139,6 +144,6 @@ class WelcomesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def welcome_params
-      params.require(:welcome).permit(:name, :logo, :decription, :link, :org, :imgs => [])
+      params.require(:welcome).permit(:name, :logo, :decription, :link, :org, :recommend, :approved, :imgs => [])
     end
 end
