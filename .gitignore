@@ -17,3 +17,8 @@
 /tmp
 */.DS_Store
 .DS_Store
+
+config/secrets.yml
+config/database.yml
+
+/db/schema.rb
