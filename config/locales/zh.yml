@@ -9,6 +9,15 @@ zh:
         name: "应用名称"
         decription: "应用描述"
         logo: "APP图标(LOGO)"
+        imgs: "应用截图"
+    errors:
+      models:
+        welcome:
+          attributes:
+            name:
+              blank: "不能为空"
+            logo:
+              blank: "不能为空"
   v:
     app: "APP留有益"
     wel: "首页"
@@ -25,3 +34,12 @@ zh:
     inputdesc: "请输入应用简介"
     inputlink: "请输入下载地址"
     inputorg: "请输入官网地址"
+    decription: "应用描述"
+    aboutus: "关于我们"
+    abouthtml: ["app留有益是一个app共享社区，在这里你可以分享你的app，也可以发现其他精彩app。 \n \n ","联系我们可以发送邮件至 admin@app621.com，我们将尽快回复您。 \n \n ","微信公众账号：appliuyouyi \n ","微博：APP留有益\n"]
+  g:
+    title: "%{t}_APP留有益"
+    desc: "留有益社区是一个app共享社区，在这里你可以分享你的app，也可以发现其他精彩app推荐。一切尽在app621.com"
+    keywords: "app留有益 最新app app推荐 app排行2016 发现新app 逆天APP 冷门APP 逼格APP"
+  p:
+    root: "首页"

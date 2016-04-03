@@ -4,7 +4,7 @@ div(style="height:0;overflow:hidden;")
   .wrapper
     =link_to root_path, class: "app621root" do
       ="app621.com"
-    =link_to root_path, class: "app621desc" do 
+    =link_to root_path, class: "app621desc" do
       = t("v.app")
     .logo.pacman
       div
@@ -16,6 +16,6 @@ div(style="height:0;overflow:hidden;")
     =link_to root_path, class: "topdot" do
       i.icon.iconfont.home &#xe600;
       = t("v.wel")
-    =link_to root_path, class: "topdot" do
+    =link_to about_welcomes_path, class: "topdot" do
       i.icon.iconfont.about &#xe604;
       = t("v.about")
