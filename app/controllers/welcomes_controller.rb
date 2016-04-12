@@ -5,7 +5,6 @@ class WelcomesController < ApplicationController
   # GET /welcomes
   # GET /welcomes.json
   def index
-    #@welcomes = Welcome.all
     @recommend_apps = Welcome.approved.recommend.limit(8)
     @new_apps = Welcome.approved.newapp.limit(8)
   end
@@ -13,9 +12,13 @@ class WelcomesController < ApplicationController
   # GET /welcomes/1
   # GET /welcomes/1.json
   def show
-    render_404 unless @welcome.approved
-    @welcome.update_attribute(:view, @welcome.view + 1)
-    @welcome.update_attribute(:viewhehe, @welcome.viewhehe + rand(6))
+    if @welcome.approved == 1
+      @welcome.update_attribute(:view, @welcome.view + 1)
+      @welcome.update_attribute(:viewhehe, @welcome.viewhehe + rand(6))
+    else
+      #pending
+      render :pending
+    end
   end
 
   # GET /welcomes/new
@@ -30,7 +33,6 @@ class WelcomesController < ApplicationController
   # POST /welcomes
   # POST /welcomes.json
   def create
-    require 'fileutils'
     #@welcome = Welcome.new(welcome_params)
     logo = welcome_params[:logo]
     if logo
@@ -75,7 +77,6 @@ class WelcomesController < ApplicationController
   # PATCH/PUT /welcomes/1
   # PATCH/PUT /welcomes/1.json
   def update
-    require 'fileutils'
     #@welcome = Welcome.new(welcome_params)
     logo = welcome_params[:logo]
     if logo
@@ -83,6 +84,9 @@ class WelcomesController < ApplicationController
       @logoname = Digest::MD5.hexdigest(Time.now.to_s + rand(10000).to_s) + ext
       File.open("#{Rails.root}/public/up/#{@logoname}", "wb") do |f|
         f.write(logo.read)
+      end
+      if @welcome.logo && File.exist?("#{Rails.root}/public/up/#{@welcome.logo}")
+        File.delete("#{Rails.root}/public/up/#{@welcome.logo}")
       end
       plogo = @logoname
     end
@@ -97,6 +101,11 @@ class WelcomesController < ApplicationController
         end
         pimgs << @logoname.to_s.strip
       end
+      if @welcome.imgs
+        @welcome.imgs.each do |img|
+          File.delete("#{Rails.root}/public/up/#{img}") if File.exist?("#{Rails.root}/public/up/#{img}")
+        end
+      end
     end
     @welcome.name = welcome_params[:name] unless welcome_params[:name].blank?
     @welcome.logo = plogo unless plogo.blank?
@@ -110,7 +119,7 @@ class WelcomesController < ApplicationController
     respond_to do |format|
       if @welcome.save
         format.html { redirect_to @welcome, notice: 'Welcome was successfully updated.' }
-        format.json { render :show, status: :ok, location: @welcome }
+        format.json { render :show, status: :ok, location: nil }
       else
         format.html { render :edit }
         format.json { render json: @welcome.errors, status: :unprocessable_entity }
