@@ -1,0 +1,32 @@
+- @title = @title ? @title : 'benfu'
+- @desc = @desc ? @desc : t("g.desc")
+
+.content
+  table
+    - @app.each do |ap|
+      tr
+        td= ap.name
+        td=text_field_tag "recommend#{ap.id}", ap.recommend.blank? ? 0 : ap.recommend
+        td=text_field_tag "approved#{ap.id}", ap.approved.blank? ? 0 : ap.approved
+        td(data_id="#{ap.id}")
+          span.saveapp= t("v.save")
+javascript:
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $('.saveapp').click(function(){
+    var id = $(this).parent().attr("data_id");
+    var recommend = $('#recommend' + id).val();
+    var approved = $('#approved' + id).val();
+    var data = {welcome: {recommend: recommend, approved: approved}};
+    $.ajax({
+      url: '/welcomes/' + id,
+      type: 'put',
+      data: data,
+      dataType: 'json',
+      success: function(){},
+      error: function(){}
+    })
+  })
