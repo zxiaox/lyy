@@ -20,7 +20,7 @@ zh:
               blank: "不能为空"
   v:
     app: "APP留有益"
-    wel: "APP推荐"
+    wel: "首页"
     about: "关于"
     recommend_app: "推荐APP"
     new_app: "最新APP"
